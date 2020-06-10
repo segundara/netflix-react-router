@@ -193,7 +193,7 @@ class Register extends React.Component{
                     />
                     </Form.Group>
                 </Form.Row>
-                <button disabled={!isEnabled}>Sign up</button>
+                <Button type="submit" hidden={!isEnabled}>Sign up</Button>
                 
             </Form>
             
