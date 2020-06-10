@@ -1,6 +1,6 @@
 import React from "react";
 import { Badge, ListGroup, Container } from "react-bootstrap";
-//import { render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import {
     Col,
     Row,
@@ -97,13 +97,13 @@ class MovieDetail extends React.Component{
         const commentsUrl = "https://striveschool.herokuapp.com/api/comments/";
         const response = await fetch(commentsUrl, {
         method: "POST",
-        body: JSON.stringify(this.state.newComment),
+        body: JSON.stringify(this.state.newComments),
         headers: headers,
         });
         if (response.ok) {
         alert("Comment added");
         this.setState({
-            newComment: {
+            newComments: {
             comment: "",
             rate: 0,
             elementId: this.props.match.params.id,
@@ -115,15 +115,15 @@ class MovieDetail extends React.Component{
     };
 
   handleRadioChange = (e) => {
-    let newComment = this.state.newComment;
-    newComment.rate = e.currentTarget.id;
-    this.setState({ newComment });
+    let newComments = this.state.newComments;
+    newComments.rate = e.currentTarget.id;
+    this.setState({ newComments });
   };
 
   handleCommentText = (e) => {
-    let newComment = this.state.newComment;
-    newComment.comment = e.currentTarget.value;
-    this.setState({ newComment });
+    let newComments = this.state.newComments;
+    newComments.comment = e.currentTarget.value;
+    this.setState({ newComments });
   };
 
 
