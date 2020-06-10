@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import { Container, Alert, Dropdown } from "react-bootstrap";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import MovieDetail from './components/ShowDetail'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import SearchResult from "./components/SearchResult";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchedMovies: [],
+    };
+  }
+
+  url = "http://www.omdbapi.com/?apikey=81e7ce97";
+
+  showSearchResult = (searchString) => {
+    fetch(this.url + "&s=" + searchString)
+      .then((response) => response.json())
+      .then((responseObject) =>
+        this.setState({ searchedMovies: responseObject.Search })
+      );
+  };
+
+
+  render() {
+    return (
+      <Container>
+        <Router>
+          <Navbar showSearchResult={this.showSearchResult} />
+          <Route path="/" exact render={(props) => <SearchResult {...props} item={this.state.searchedMovies} />} />
+          <Route path="/details/:id" component={MovieDetail} />
+          <Footer />
+        </Router>
+      </Container>
+
+    );
+  }
 }
 
 export default App;
