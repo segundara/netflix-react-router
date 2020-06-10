@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Navbar, Nav, InputGroup, FormControl } from "react-bootstrap";
+import { Link, withRouter  } from 'react-router-dom';
 
 class NetflixNavbar extends Component {
   constructor(props) {
@@ -19,9 +20,10 @@ class NetflixNavbar extends Component {
   };
 
   render() {
-    //console.log(this.props)
+    console.log(this.props)
     return (
       <Navbar variant="dark" expand="lg" style={{ backgroundColor: "#221f1f" }}>
+        <Link to="/">
         <Navbar.Brand href="/">
           <img
             src="assets/logo.png"
@@ -29,24 +31,64 @@ class NetflixNavbar extends Component {
             style={{ width: "100px", height: "55px" }}
           />
         </Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link className="font-weight-bold" href="/">
+            <Link to="/"
+              className={
+                this.props.location.pathname === '/'
+                  ? "nav-link active"
+                  : "nav-link"
+              }
+              >
               Home
-            </Nav.Link>
-            <Nav.Link active className="font-weight-bold" href="/">
-              TV Shows
-            </Nav.Link>
-            <Nav.Link className="font-weight-bold" href="/">
+            </Link>
+            <Link to="/tvShow"
+              className={
+                this.props.location.pathname === '/tvShow'
+                  ? "nav-link active"
+                  : "nav-link"
+              }
+              >
+              TV Show
+            </Link>
+            <Link to="/movies"
+              className={
+                this.props.location.pathname === '/movies'
+                  ? "nav-link active"
+                  : "nav-link"
+              }
+              >
               Movies
-            </Nav.Link>
-            <Nav.Link className="font-weight-bold" href="/">
+            </Link>
+            <Link to="/recent"
+              className={
+                this.props.location.pathname === '/recent'
+                  ? "nav-link active"
+                  : "nav-link"
+              }
+              >
               Recently Added
-            </Nav.Link>
-            <Nav.Link className="font-weight-bold" href="/">
+            </Link>
+            <Link to="/myList"
+              className={
+                this.props.location.pathname === '/myList'
+                  ? "nav-link active"
+                  : "nav-link"
+              }
+              >
               My List
-            </Nav.Link>
+            </Link>
+            <Link to="/register"
+              className={
+                this.props.location.pathname === '/register'
+                  ? "nav-link active"
+                  : "nav-link"
+              }
+              >
+              Register
+            </Link>
           </Nav>
           <span className="d-none d-md-flex align-items-center">
             <InputGroup className="icons">
@@ -69,4 +111,4 @@ class NetflixNavbar extends Component {
   }
 }
 
-export default NetflixNavbar;
+export default withRouter(NetflixNavbar);

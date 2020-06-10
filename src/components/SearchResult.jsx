@@ -44,7 +44,7 @@ class SearchResult extends Component {
   };
 
   render() {
-    console.log(this.props.item)
+    console.log(this.props.toBeSearched)
     return (
 
         <div>
@@ -79,13 +79,13 @@ class SearchResult extends Component {
                 An error has occurred, please try again later
               </Alert>
             )}
-            {this.props.item.length > 0 && (
+            {this.props.toBeSearched.length > 0 && (
               <Gallery
                 title="Search results"
-                movies={this.props.item}
+                movies={this.props.toBeSearched}
               />
             )}
-            {!this.state.error && !this.props.item.length > 0 && (
+            {!this.state.error && !this.props.toBeSearched.length > 0 && (
               <>
                 <Gallery
                   title="Harry Potter"

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import "./App.css";
+//import "./App.css";
 import { Container, Alert, Dropdown } from "react-bootstrap";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import MovieDetail from './components/ShowDetail'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import SearchResult from "./components/SearchResult";
+import Register from "./components/Register";
 
 class App extends Component {
   constructor(props) {
@@ -31,8 +32,9 @@ class App extends Component {
       <Container>
         <Router>
           <Navbar showSearchResult={this.showSearchResult} />
-          <Route path="/" exact render={(props) => <SearchResult {...props} item={this.state.searchedMovies} />} />
+          <Route path="/" exact render={(props) => <SearchResult {...props} toBeSearched={this.state.searchedMovies} />} />
           <Route path="/details/:id" component={MovieDetail} />
+          <Route path="/register" exact component={Register}/>
           <Footer />
         </Router>
       </Container>
