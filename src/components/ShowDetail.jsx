@@ -32,8 +32,6 @@ class MovieDetail extends React.Component{
 
   componentDidMount = async () => {
         const movieId = this.props.match.params.id;
-        // console.log(movieId)
-        // console.log(this.state.newComment.elementId)
       const username = 'user24';
       const password = '48D4vaVh6Ra3DD8w';
 
@@ -50,7 +48,6 @@ class MovieDetail extends React.Component{
       const movieInfo = await fetch(movieUrl)
       .then((response) => response.json());
       this.setState({ movieInfo, loading: false});
-      //console.log(this.state.movieInfo)
       }catch (err) {
         console.log(err);
         this.setState({
@@ -276,7 +273,6 @@ class MovieDetail extends React.Component{
   }
 
 render (){
-    //console.log(this.state.newComment.elementId)
   return(
       <>
       {this.props.match.params.id && this.state.loading &&(
@@ -293,7 +289,6 @@ render (){
         </>
       )}
       </>
-      //this.displayItems()
   )
 }
 
