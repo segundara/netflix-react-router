@@ -1,14 +1,8 @@
 import React from 'react'
 import {
     Col,
-    Row,
-    Modal,
     Form,
-    InputGroup,
-    FormControl,
     Button,
-    Image,
-    Alert
   } from "react-bootstrap";
 
 
