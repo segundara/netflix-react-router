@@ -12,7 +12,6 @@ class SearchResult extends Component {
       searchedMovies: [],
       loading: true,
       error: false,
-      //comments: [],
     };
   }
 
@@ -44,7 +43,6 @@ class SearchResult extends Component {
   };
 
   render() {
-    console.log(this.props.toBeSearched)
     return (
 
         <div>
